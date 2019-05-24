@@ -3,7 +3,6 @@ import { Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
-import editProfile from "./pages/editProfile";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
@@ -23,8 +22,6 @@ class App extends Component {
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute exact path="/profile" component={Profile} />
-            {/* <PrivateRoute path="/profile/edit" component={editProfile} /> */}
-
           </Switch> 
         </div>
       </AuthProvider>
