@@ -6,8 +6,13 @@ function AnonRoute({ component: Component, isLoggedin, ...rest }) {
   return (
     <Route
       {...rest}
-      render={props =>
-        !isLoggedin ? <Component {...props} /> : <Redirect to="/private" />
+      render={props => {
+        if(!isLoggedin){
+          return <Component {...props} />
+        } else {
+          return <Redirect to="/profile" />
+        }
+      }     
       }
     />
   );

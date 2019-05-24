@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import Private from "./pages/Private";
+import Profile from "./pages/Profile";
+import editProfile from "./pages/editProfile";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
@@ -15,13 +16,16 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <h1>Basic React Authentication</h1>
           <Navbar />
+          </div>
+          <div>
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
-            <PrivateRoute path="/private" component={Private} />
-          </Switch>
+            <PrivateRoute exact path="/profile" component={Profile} />
+            {/* <PrivateRoute path="/profile/edit" component={editProfile} /> */}
+
+          </Switch> 
         </div>
       </AuthProvider>
     );
