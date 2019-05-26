@@ -108,36 +108,34 @@ class Profile extends Component {
     return (
       <div>
         {clickedEdit ? (
-          <div>
+          <div className="profile-container">
             <form onSubmit={this.handleSubmit}>
+            <div className="input-container">
               <label name="occupation">occupation</label>
               <input type="text" value={occupation} name="occupation" onChange={this.handleChange}></input>
+              </div>
+              <div className="input-container">
               <label name="description">Description</label>
               <input type="text" value={description} name="description" onChange={this.handleChange}></input>
+              </div>
+              <div className="input-container">
               <label>Image</label>
               <input type="file" onChange={this.fileOnchange}></input>
+              </div>
               {disable ? <input type="submit" disabled></input> : <input type="submit"></input>}
+
             </form>
           </div>
         ) : (
-            <div>
+            <div className="profile-container">
              
               <h2>{occupation}</h2>
-              <p>{description}</p>
+              <p className="description-container">{description}</p>
               <img src={imgUrl} alt="lala" />
-              {/* {projects && projects.map((project, index) => {
-                return (
-                  <div key={index}>
-                    <h2>{project.projectname}</h2>
-                    <p>{project.owner}</p>
-                    <p>{project.description}</p>
-                  </div>
-                )
-              })} */}
+              <button onClick={this.clickedEditChange}>Edit</button>
+              <Link to="/profile/projects" >view projects</Link>
             </div>
           )}
-        <button onClick={this.clickedEditChange}>Edit</button>
-        <Link to="/profile/projects" >view projects</Link>
       </div>
     );
   }

@@ -20,7 +20,7 @@ class Home extends Component {
   }
 
   joinProject = () => {
-    
+
   }
 
    componentDidMount(){
@@ -33,7 +33,6 @@ class Home extends Component {
     const {projects} = this.state
     return (
       <div>
-       <h3>welcome home, {this.props.user.username}</h3>
        <div className="projects-container">
         {projects && projects.map((project, index) => {
                 return (

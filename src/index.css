@@ -52,7 +52,52 @@ button {
   justify-content: center;
 }
 
+.nav-container {
+  margin-top: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 
 .projects-container {
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+}
+
+.login-container {
+  border: 1px solid black;
+  height: 93vh;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+}
+
+.input-container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.profile-container{
+  border: 1px solid black;
+  width: 90%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.description-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
 }

@@ -7,6 +7,7 @@ class Navbar extends Component {
     const { user, logout, isLoggedin } = this.props;
     return (
       <div className="nav-container">
+        <Link to="/projects">connectDev</Link>
         {isLoggedin ? (
           <>
             <Link to="/profile">{user.username}</Link>

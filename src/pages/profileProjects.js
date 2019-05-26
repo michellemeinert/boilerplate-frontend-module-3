@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import project from '../lib/project-service'
 import { withAuth } from "../lib/AuthProvider";
+import {Link} from 'react-router-dom'
 
 class profileProjects extends Component {
   state = {
@@ -37,6 +38,7 @@ class profileProjects extends Component {
                 )
         })}  
        </div>
+       <Link to="/profile/projects/addProject">add Project</Link>
       </div>
     )
   }

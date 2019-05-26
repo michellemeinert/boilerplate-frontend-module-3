@@ -56,16 +56,22 @@ class AddProject extends Component {
     const { projectname, description, lookingFor } = this.state
     return (
       <div>
-          <div>
+          <div className="login-container">
             <form onSubmit={
               this.handleSubmit
               }>
+              <div className="input-container">
               <label name="projectname">Projectname</label>
               <input type="text" value={projectname} name="projectname" onChange={this.handleChange}></input>
+              </div>
+              <div className="input-container">
               <label name="description">Description</label>
               <input type="text" value={description} name="description" onChange={this.handleChange}></input>
+              </div>
+              <div className="input-container">
               <label name="lookingFor">lookingFor(oppucation)</label>
               <input type="text" value={lookingFor} name="lookingFor" onChange={this.handleChange}></input>
+              </div>
               <input type="submit"/>
             </form>
           </div>    

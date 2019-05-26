@@ -21,7 +21,9 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
+      <div className="login-container">
       <form onSubmit={this.handleFormSubmit}>
+        <div className="input-container">
         <label>Username:</label>
         <input
           type="text"
@@ -29,6 +31,8 @@ class Login extends Component {
           value={username}
           onChange={this.handleChange}
         />
+        </div>
+        <div className="input-container">
         <label>Password:</label>
         <input
           type="password"
@@ -36,8 +40,10 @@ class Login extends Component {
           value={password}
           onChange={this.handleChange}
         />
+        </div>
         <input type="submit" value="Login" />
       </form>
+      </div>
     );
   }
 }
