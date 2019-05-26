@@ -133,7 +133,9 @@ class Profile extends Component {
               <p className="description-container">{description}</p>
               <img src={imgUrl} alt="lala" />
               <button onClick={this.clickedEditChange}>Edit</button>
-              <Link to="/profile/projects" >view projects</Link>
+              <button>
+              <Link to="/profile/projects" className="link">view projects</Link>
+              </button>
             </div>
           )}
       </div>

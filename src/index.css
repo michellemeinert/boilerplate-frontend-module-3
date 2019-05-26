@@ -44,7 +44,10 @@ button {
   color: #fff;
   border: 1px solid #fff
 }
-
+.link {
+  color: white;
+  text-decoration: none;
+}
 
 .container {
   display: flex;
@@ -53,7 +56,10 @@ button {
 }
 
 .nav-container {
-  margin-top: 7px;
+  width: 100%;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

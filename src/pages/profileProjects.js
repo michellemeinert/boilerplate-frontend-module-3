@@ -38,7 +38,9 @@ class profileProjects extends Component {
                 )
         })}  
        </div>
-       <Link to="/profile/projects/addProject">add Project</Link>
+       <button>
+       <Link to="/profile/projects/addProject" className="link">add Project</Link>
+       </button>
       </div>
     )
   }
