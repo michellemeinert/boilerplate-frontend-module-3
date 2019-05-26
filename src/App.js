@@ -4,7 +4,8 @@ import { Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import Project from "./pages/Project";
+import AddProject from "./pages/AddProject";
+import profileProjects from "./pages/profileProjects";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
@@ -27,7 +28,8 @@ class App extends Component {
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute exact path="/projects" component={Home} />
             <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute exact path="/profile/projects" component={Project}/>
+            <PrivateRoute exact path="/profile/projects" component={profileProjects}/>
+            <PrivateRoute exact path="/profile/projects/addProject" component={AddProject}/>
 
           </Switch> 
         </div>

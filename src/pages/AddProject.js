@@ -1,12 +1,12 @@
 // seperate page to add projects , will use profile service
 import React, { Component } from 'react'
-import profile from '../lib/profile-service'
+//import profile from '../lib/profile-service'
 import project from '../lib/project-service'
 import { withAuth } from "../lib/AuthProvider";
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
 
 
-class Project extends Component {
+class AddProject extends Component {
   state = {
     owner: "",
     projectname: "",
@@ -21,13 +21,6 @@ class Project extends Component {
       [name]: value
     })
   }
-
-  // clickedAddProjectChange = () => {
-  //   console.log('hey girl')
-  //   this.setState({
-  //     clickedAddProject: false
-  //   })
-  // }
 
   handleSubmit = (event) => {
     console.log('in handleSubmit')
@@ -45,20 +38,6 @@ class Project extends Component {
       .catch((error) => console.log(error))
   }
 
-  // setProjects = () => {
-  //   console.log('in setProjects')
-  //   console.log(this.state)
-  //   //  const {projects} = this.props.user.projects
-  //   project.getProjectsProfile()
-  //     .then((data) => {
-  //       this.setState({
-     
-  //       })
-  //       console.log('new state', data.projects)
-  //     })
-  //     .catch((err) => console.log(err))
-  // }
-
   componentDidMount() {
     console.log('state in didMount', this.state)
     const { projectname, description, lookingFor } = this.state
@@ -74,7 +53,7 @@ class Project extends Component {
 
   render() {
     console.log('state in render', this.state)
-    const { owner, projectname, description, lookingFor } = this.state
+    const { projectname, description, lookingFor } = this.state
     return (
       <div>
           <div>
@@ -89,15 +68,10 @@ class Project extends Component {
               <input type="text" value={lookingFor} name="lookingFor" onChange={this.handleChange}></input>
               <input type="submit"/>
             </form>
-          </div>
-            <div>
-              <h2>{projectname}</h2>
-              <p>{description}</p>
-              <p>{lookingFor}</p>
-            </div>      
+          </div>    
       </div>
     )
   }
 }
 
-export default withAuth(Project);
+export default withAuth(AddProject);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import profile from '../lib/profile-service'
-import project from '../lib/project-service'
+//import project from '../lib/project-service'
 import {Link} from 'react-router-dom'
 
 
