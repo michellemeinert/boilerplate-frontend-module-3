@@ -10,22 +10,23 @@ class Profile {
 
   editProfile = (data) => {
     return this.profile.put('/edit', data)
-    .then((data)=> data)
+    .then(({data}) => data)
   }
 
   addImage = (image) => {
     return this.profile.post('/image', image)
-    .then(({data}) => data)
+    .then(({image}) => image)
   }
 
   addProject = (project) => {
-    return this.profile.post('/addProject', project)
-    .then((data)=> data)
+    return this.profile.post('/projects/addProject', project)
+    .then(({data}) => data)
   }
 
-  getProjects = () => {
-    return this.profile.get('/')
-  }
+  // getProjects = () => {
+  //   return this.profile.get('/')
+  //   .then(({data}) => data)
+  // }
   
 }
 

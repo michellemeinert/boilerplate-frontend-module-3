@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import profile from '../lib/profile-service'
+import project from '../lib/project-service'
+import {Link} from 'react-router-dom'
+
 
 class Profile extends Component {
   state = {
@@ -8,54 +11,100 @@ class Profile extends Component {
     occupation: "",
     description: "",
     imgUrl: "",
-    diasable: true,
-    clickedEdit: false
-      }
-      handleChange = (event) => {
-        const {name, value} = event.target;
+    disable: true,
+    clickedEdit: false,
+    //clickedAddProject: false
+  }
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { occupation, description } = this.state;
+    profile.editProfile({ occupation, description })
+      .then(() => {
         this.setState({
-          [name]: value
+          occupation,
+          description,
+          clickedEdit: false
         })
-      }
-    
-      handleSubmit = (event) => {
-        event.preventDefault();
-        const {occupation, description} = this.state;
-        profile.editProfile({occupation, description})
-        .then((data) => {
-          this.setState({
-            projects: [...this.state.projects, data],
-            clickedEdit: false
-          })
-        })
-        .catch((error) => console.log(error))
-      }
-    
-      fileOnchange = (event) => {
-        const file = event.target.files[0];
-        const uploadData = new FormData()
-        uploadData.append('photo', file)
-    
-        profile.addImage(uploadData)
-        .then((imgUrl) => {
-          this.setState({
-            imgUrl,
-            disable: false,
-          })
-        })
-        .catch((error) => console.log(error))
-      }
+      })
+      .catch((error) => console.log(error))
+  }
 
-      clickedEditChange = () => {
+  fileOnchange = (event) => {
+    console.log('state in fileOnChange', this.state.imgUrl)
+    console.log('in fileOnChange')
+    const file = event.target.files[0];
+    const uploadData = new FormData()
+    uploadData.append('photo', file)
+
+    profile.addImage(uploadData)
+      .then((imgUrl) => {
         this.setState({
-          clickedEdit: true
+          imgUrl,
+          disable: false
         })
-      }
+        console.log('state in fileOnChange', this.state.imgUrl)
+      })
+      .catch((error) => console.log(error))
+  }
 
+  clickedEditChange = () => {
+    console.log("hi michelle :Ü")
+    this.setState({
+      clickedEdit: true
+    })
+  }
 
+  componentDidMount() {
+    const {occupation, description, imgUrl} = this.props.user
+    this.setState({
+      occupation,
+      description,
+      imgUrl
+    })
+  }
+
+//  clickedAddProjectChange = () => {
+//    this.setState({
+//      clickedAddProject: true
+//    })
+//  }
+
+//  setProjects = () => {
+//    console.log('in setProjects')
+//    console.log(this.state)
+//   //  const {projects} = this.props.user.projects
+//    project.getProjectsProfile()
+//    .then((data)=>{
+//     this.setState({
+//       projects: [data.projects]
+//     })
+//     console.log('new state', data.projects)
+//    })
+//    .catch((err)=> console.log(err))
+//  }
+
+//  componentWillMount() {
+//    this.setProjects()
+//     .then((data)=>{
+//     this.setState({
+//       projects: [data.projects]
+//     })
+//     console.log('new state', data.projects)
+//    })
+//    .catch((err)=> console.log(err))
+//  }
 
   render() {
-    const { occupation, description, projects, disable, clickedEdit, imgUrl } = this.state
+    console.log(this.state)
+    const { occupation, description, disable, clickedEdit, imgUrl } = this.state
     return (
       <div>
         {clickedEdit ? (
@@ -72,25 +121,28 @@ class Profile extends Component {
           </div>
         ) : (
             <div>
-              <h1>Welcome {this.props.user.username}</h1>
+             
               <h2>{occupation}</h2>
               <p>{description}</p>
               <img src={imgUrl} alt="lala" />
-              {projects && projects.map((project, index) => {
+              {/* {projects && projects.map((project, index) => {
                 return (
                   <div key={index}>
                     <h2>{project.projectname}</h2>
+                    <p>{project.owner}</p>
                     <p>{project.description}</p>
                   </div>
                 )
-              })}
+              })} */}
             </div>
           )}
-        <button onClick={this.clickedEditChange}> Edit</button>
+        <button onClick={this.clickedEditChange}>Edit</button>
+        <Link to="/profile/projects" >view projects</Link>
       </div>
     );
   }
 }
 
+
 export default withAuth(Profile);
-  
+

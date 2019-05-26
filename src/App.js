@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import { Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Project from "./pages/Project";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
 import PrivateRoute from "./components/PrivateRoute";
 import AnonRoute from "./components/AnonRoute";
 import AuthProvider from "./lib/AuthProvider";
+
+
 
 class App extends Component {
   render() {
@@ -21,7 +25,10 @@ class App extends Component {
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
+            <PrivateRoute exact path="/projects" component={Home} />
             <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute exact path="/profile/projects" component={Project}/>
+
           </Switch> 
         </div>
       </AuthProvider>
