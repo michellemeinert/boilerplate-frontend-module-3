@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 //import profile from '../lib/profile-service'
 import project from '../lib/project-service'
 import { withAuth } from "../lib/AuthProvider";
-//import {Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 
 class AddProject extends Component {
@@ -12,7 +12,8 @@ class AddProject extends Component {
     projectname: "",
     description: "",
     contributors: [],
-    lookingFor: ""
+    lookingFor: "",
+    redirect: false
   }
 
   handleChange = (event) => {
@@ -25,15 +26,16 @@ class AddProject extends Component {
   handleSubmit = (event) => {
     console.log('in handleSubmit')
     event.preventDefault();
-    const { projectname, description, owner, lookingFor} = this.state;
-    project.addProject({ projectname, description, owner, lookingFor })
+    const { projectname, description, owner, lookingFor, redirect} = this.state;
+    project.addProject({ projectname, description, owner, lookingFor, redirect})
       .then(() => {
         this.setState({
           projectname,
           description,
           lookingFor,
-          owner: this.props.user.username
-        }) 
+          owner: this.props.user.username,
+          redirect: true
+        },()=>{this.redirectAfterSumbit()}) 
       })
       .catch((error) => console.log(error))
   }
@@ -46,10 +48,16 @@ class AddProject extends Component {
       description,
       lookingFor,
       owner: this.props.user.username,
+      redirect: false
     })
   }
 
+  redirectAfterSumbit = () => {
+   if(this.state.redirect) {
+   return this.props.history.push('/profile/projects') 
+  }
 
+ }
 
   render() {
     console.log('state in render', this.state)
@@ -58,7 +66,8 @@ class AddProject extends Component {
       <div>
           <div className="login-container">
             <form onSubmit={
-              this.handleSubmit
+              this.handleSubmit 
+              //this.redirectAfterSumbit
               }>
               <div className="input-container">
               <label name="projectname">Projectname</label>

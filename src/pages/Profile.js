@@ -26,11 +26,12 @@ class Profile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { occupation, description } = this.state;
+    
     profile.editProfile({ occupation, description })
-      .then(() => {
+      .then((data) => {
         this.setState({
-          occupation,
-          description,
+          occupation: data.occupation,
+          description: data.description,
           clickedEdit: false
         })
       })
@@ -46,6 +47,7 @@ class Profile extends Component {
 
     profile.addImage(uploadData)
       .then((imgUrl) => {
+        console.log('state in fileOnChange', this.state.imgUrl)
         this.setState({
           imgUrl,
           disable: false
@@ -63,44 +65,21 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    const {occupation, description, imgUrl} = this.props.user
-    this.setState({
-      occupation,
-      description,
-      imgUrl
+
+    profile.getProfile()
+    .then((data)=>{
+      console.log(data)
+      const { occupation, description, imgUrl } = data;
+      this.setState({
+        occupation,
+        description,
+        imgUrl
+      })
     })
+     
   }
 
-//  clickedAddProjectChange = () => {
-//    this.setState({
-//      clickedAddProject: true
-//    })
-//  }
 
-//  setProjects = () => {
-//    console.log('in setProjects')
-//    console.log(this.state)
-//   //  const {projects} = this.props.user.projects
-//    project.getProjectsProfile()
-//    .then((data)=>{
-//     this.setState({
-//       projects: [data.projects]
-//     })
-//     console.log('new state', data.projects)
-//    })
-//    .catch((err)=> console.log(err))
-//  }
-
-//  componentWillMount() {
-//    this.setProjects()
-//     .then((data)=>{
-//     this.setState({
-//       projects: [data.projects]
-//     })
-//     console.log('new state', data.projects)
-//    })
-//    .catch((err)=> console.log(err))
-//  }
 
   render() {
     console.log(this.state)

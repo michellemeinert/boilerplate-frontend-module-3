@@ -27,9 +27,13 @@ class Project {
     return this.project.get('/profile/projects')
     .then(({data}) => data)
   }
+  
+  addContributors = (projectId) => {
+    return this.project.put(`/projects/${projectId}/contributors`)
+    .then(({data}) => data)
+  }
+  
 }
-
-
 
 const project = new Project();
 

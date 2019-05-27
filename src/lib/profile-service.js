@@ -7,7 +7,10 @@ class Profile {
       withCredentials: true
     });
   }
-
+  getProfile = () => {
+    return this.profile.get('/')
+    .then(({data}) => data)
+  }
   editProfile = (data) => {
     return this.profile.put('/edit', data)
     .then(({data}) => data)
