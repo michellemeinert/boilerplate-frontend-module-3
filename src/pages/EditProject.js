@@ -1,4 +1,3 @@
-// seperate page to add projects , will use profile service
 import React, { Component } from 'react'
 //import profile from '../lib/profile-service'
 import project from '../lib/project-service'
@@ -26,18 +25,26 @@ class AddProject extends Component {
   handleSubmit = (event) => {
     console.log('in handleSubmit')
     event.preventDefault();
-    const { projectname, description, owner, lookingFor, redirect} = this.state;
-    project.addProject({ projectname, description, owner, lookingFor, redirect})
+    const { projectname, description, lookingFor, redirect} = this.state;
+    project.editProject({ projectname, description, lookingFor, redirect})
       .then(() => {
         this.setState({
           projectname,
           description,
           lookingFor,
-          owner: this.props.user.username,
           redirect: true
         },()=>{this.redirectAfterSumbit()}) 
       })
       .catch((error) => console.log(error))
+  }
+
+  deleteProject = (id) => {
+    project.deleteProject(id)
+    .then(()=>{
+      this.setState({
+        redirect: true
+      })
+    })
   }
 
   componentDidMount() {
@@ -47,8 +54,7 @@ class AddProject extends Component {
       projectname,
       description,
       lookingFor,
-      owner: this.props.user.username,
-      redirect: false
+      owner: this.props.user.username
     })
   }
 
@@ -62,13 +68,13 @@ class AddProject extends Component {
 
   render() {
     console.log('state in render', this.state)
+    console.log('hello, I am in editProject')
     const { projectname, description, lookingFor } = this.state
     return (
       <div>
           <div className="login-container">
             <form onSubmit={
-              this.handleSubmit 
-              //this.redirectAfterSumbit
+              this.handleSubmit
               }>
               <div className="input-container">
               <label name="projectname">Projectname</label>
@@ -84,7 +90,13 @@ class AddProject extends Component {
               </div>
               <input type="submit"/>
             </form>
-          </div>    
+          </div>  
+          <button onClick={()=>{
+            this.deleteProject();
+            this.redirectAfterSumbit()
+            }
+            
+            }>Delete Project</button>  
       </div>
     )
   }

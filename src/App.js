@@ -5,14 +5,15 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import AddProject from "./pages/AddProject";
+import EditProject from "./pages/EditProject";
 import profileProjects from "./pages/profileProjects";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
+
 import PrivateRoute from "./components/PrivateRoute";
 import AnonRoute from "./components/AnonRoute";
 import AuthProvider from "./lib/AuthProvider";
-
 
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute exact path="/profile/projects" component={profileProjects}/>
             <PrivateRoute exact path="/profile/projects/addProject" component={AddProject}/>
+            <PrivateRoute path={`/projects/:id/editProject`} component={EditProject}/>
 
           </Switch> 
         </div>

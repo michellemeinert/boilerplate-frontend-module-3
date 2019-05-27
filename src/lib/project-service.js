@@ -8,9 +8,13 @@ class Project {
     });
   }
 
-  editProject = (data) => {
-    return this.project.put('/profile/editProject', data)
+  editProject = (data, _id) => {
+    return this.project.put(`projects/${_id}/editProject`, data)
     .then(({data}) => data)
+  }
+
+  deleteProject = (_id) => {
+    return this.project.delete(`/projects/${_id}`)
   }
 
   addProject = (project) => {

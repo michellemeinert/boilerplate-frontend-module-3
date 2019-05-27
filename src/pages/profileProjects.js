@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom'
 
 class profileProjects extends Component {
   state = {
-    profileProjects: []
+    profileProjects: [],
+
   }
 
   getProfileProjects = () => {
@@ -22,11 +23,13 @@ class profileProjects extends Component {
      this.getProfileProjects()
    }
 
+
   render() {
-    console.log(this.state)
+    console.log('state in profile',this.state)
    const {profileProjects} = this.state
     return (
       <div>
+        
        <div className="projects-container">
          {profileProjects && profileProjects.map((project, index) => {
                 return (
@@ -34,6 +37,9 @@ class profileProjects extends Component {
                     <h2>{project.projectname}</h2>
                     <p>{project.owner}</p>
                     <p>{project.description}</p>
+                    <button>
+                      <Link to={`/projects/${project._id}/editProject`} className="link">edit Project</Link>
+                    </button>
                   </div>
                 )
         })}  
