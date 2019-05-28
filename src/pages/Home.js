@@ -6,8 +6,7 @@ import { withAuth } from "../lib/AuthProvider";
 
 class Home extends Component {
   state = {
-    projects: [],
-    redirect: false
+    projects: []
   }
 
   getAllProjects = () => {
@@ -25,11 +24,7 @@ class Home extends Component {
     console.log(this.props)
     project.addContributors(id)
       .then((data) => {
-        
-        this.setState({
-          projects: data.projects,
-          redirect: true
-        },()=>{this.redirectAfterSumbit()})
+        this.getAllProjects()
       })
       .catch((err) => console.log(err))
 
@@ -37,13 +32,6 @@ class Home extends Component {
 
   componentDidMount() {
     this.getAllProjects()
-  }
-
-  redirectAfterSumbit = () => {
-    if(this.state.redirect) {
-    return this.props.history.push('/projects') 
-   }
- 
   }
 
   render() {
@@ -55,7 +43,7 @@ class Home extends Component {
       <div>
         <div className="projects-container">
 
-          {projects.length > 0 && projects.map((project, index) => {
+          {projects && projects.map((project, index) => {
             return (
               <div key={index} className="projects-container">
                 <h2>{project.projectname}</h2>

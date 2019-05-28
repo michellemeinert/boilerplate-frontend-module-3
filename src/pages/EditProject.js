@@ -26,7 +26,7 @@ class AddProject extends Component {
     console.log('in handleSubmit')
     event.preventDefault();
     const { projectname, description, lookingFor, redirect} = this.state;
-    project.editProject({ projectname, description, lookingFor, redirect})
+    project.editProject({ projectname, description, lookingFor, redirect}, this.props.match.params.id)
       .then(() => {
         this.setState({
           projectname,
@@ -38,8 +38,8 @@ class AddProject extends Component {
       .catch((error) => console.log(error))
   }
 
-  deleteProject = (id) => {
-    project.deleteProject(id)
+  deleteProject = () => {
+    project.deleteProject(this.props.match.params.id)
     .then(()=>{
       this.setState({
         redirect: true
