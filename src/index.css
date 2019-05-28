@@ -113,3 +113,22 @@ button {
   display: flex;
   flex-direction: column;
 }
+.menu {
+  width: 20px;
+  height: 15px;
+  position: relative;
+}
+.menu span {
+  display: block;
+  width: 23px;
+  height: 3px;
+  margin-bottom: 5px;
+  position: relative;
+  margin-left: 110px;
+  background: black;
+  border-radius: 1px;
+  
+  z-index: 1;
+
+  
+}
