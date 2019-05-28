@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import AddProject from "./pages/AddProject";
 import EditProject from "./pages/EditProject";
+import EditProfile from "./pages/EditProfile";
 import profileProjects from "./pages/profileProjects";
 import Signup from "./pages/Signup";
+import BurgerMenu from "./pages/BurgerMenu";
 import Login from "./pages/Login";
 
 
@@ -22,6 +25,7 @@ class App extends Component {
       <AuthProvider>
         <div className="container">
           <Navbar />
+          {/* <SearchBar /> */}
           </div>
           <div>
           <Switch>
@@ -32,6 +36,8 @@ class App extends Component {
             <PrivateRoute exact path="/profile/projects" component={profileProjects}/>
             <PrivateRoute exact path="/profile/projects/addProject" component={AddProject}/>
             <PrivateRoute path={`/projects/:id/editProject`} component={EditProject}/>
+            <PrivateRoute exact path={`/profile/edit`} component={EditProfile}/>
+            <PrivateRoute exact path={`/menu`} component={BurgerMenu}/>
 
           </Switch> 
         </div>

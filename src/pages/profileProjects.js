@@ -35,7 +35,6 @@ class profileProjects extends Component {
                 return (
                   <div key={index} className="projects-container">
                     <h2>{project.projectname}</h2>
-                    <p>{project.owner}</p>
                     <p>{project.description}</p>
                     <button>
                       <Link to={`/projects/${project._id}/editProject`} className="link">edit Project</Link>
@@ -44,9 +43,6 @@ class profileProjects extends Component {
                 )
         })}  
        </div>
-       <button>
-       <Link to="/profile/projects/addProject" className="link">add Project</Link>
-       </button>
       </div>
     )
   }

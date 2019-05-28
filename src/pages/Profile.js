@@ -16,57 +16,57 @@ class Profile extends Component {
     //clickedAddProject: false
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    })
-  }
+  // handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   })
+  // }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { occupation, description } = this.state;
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const { occupation, description } = this.state;
     
-    profile.editProfile({ occupation, description })
-      .then((data) => {
-        this.setState({
-          occupation: data.occupation,
-          description: data.description,
-          clickedEdit: false
-        })
-      })
-      .catch((error) => console.log(error))
-  }
+  //   profile.editProfile({ occupation, description })
+  //     .then((data) => {
+  //       this.setState({
+  //         occupation: data.occupation,
+  //         description: data.description,
+  //         clickedEdit: false
+  //       })
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
 
-  fileOnchange = (event) => {
-    console.log('state in fileOnChange', this.state.imgUrl)
-    console.log('in fileOnChange')
-    const file = event.target.files[0];
-    const uploadData = new FormData()
-    uploadData.append('photo', file)
+  // fileOnchange = (event) => {
+  //   console.log('state in fileOnChange', this.state.imgUrl)
+  //   console.log('in fileOnChange')
+  //   const file = event.target.files[0];
+  //   const uploadData = new FormData()
+  //   uploadData.append('photo', file)
 
-    profile.addImage(uploadData)
-      .then((imgUrl) => {
-        console.log('state in fileOnChange', this.state.imgUrl)
-        this.setState({
-          imgUrl,
-          disable: false
-        })
-        console.log('state in fileOnChange', this.state.imgUrl)
-      })
-      .catch((error) => console.log(error))
-  }
+  //   profile.addImage(uploadData)
+  //     .then((imgUrl) => {
+  //       console.log('state in fileOnChange', this.state.imgUrl)
+  //       this.setState({
+  //         imgUrl,
+  //         disable: false
+  //       })
+  //       console.log('state in fileOnChange', this.state.imgUrl)
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
 
-  clickedEditChange = () => {
-    console.log("hi michelle :Ü")
-    this.setState({
-      clickedEdit: true
-    })
-  }
+  // clickedEditChange = () => {
+  //   console.log("hi michelle :Ü")
+  //   this.setState({
+  //     clickedEdit: true
+  //   })
+  // }
 
-  cancelEdit = () => {
-    return this.props.history.push('/profile/projects')
-  }
+  // cancelEdit = () => {
+  //   return this.props.history.push('/profile/projects')
+  // }
 
   componentDidMount() {
 
@@ -90,7 +90,7 @@ class Profile extends Component {
     const { occupation, description, disable, clickedEdit, imgUrl } = this.state
     return (
       <div>
-        {clickedEdit ? (
+        {/* {clickedEdit ? (
           <div className="profile-container">
             <form onSubmit={this.handleSubmit}>
             <div className="input-container">
@@ -110,19 +110,15 @@ class Profile extends Component {
             </form>
             <button onClick={this.cancelEdit}>Cancel</button>
           </div>
-        ) : (
+        ) : ( */}
             <div className="profile-container">
              
               <h2>{occupation}</h2>
               <p className="description-container">{description}</p>
               <img src={imgUrl} alt="lala" />
-              <button onClick={this.clickedEditChange}>Edit</button>
-              <button>
-              <Link to="/profile/projects" className="link">view projects</Link>
-              </button>
             </div>
-          )}
-      </div>
+         
+      </div> 
     );
   }
 }

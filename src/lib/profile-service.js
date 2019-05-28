@@ -11,6 +11,12 @@ class Profile {
     return this.profile.get('/profile')
     .then(({data}) => data)
   }
+
+  getStrangersProfile = (id) => {
+    return this.profile.get('/profile/id', id)
+    .then(({data}) => data)
+  }
+
   editProfile = (data) => {
     return this.profile.put('/profile/edit', data)
     .then(({data}) => data)

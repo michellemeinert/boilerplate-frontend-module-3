@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
 html {
   box-sizing: border-box;
 }
@@ -15,7 +17,7 @@ body {
 
 body {
   color: #111;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 16px;
   line-height: 147%;
 }
@@ -39,13 +41,20 @@ p {
 /* ---- components ---- */
 
 button {
-  width: 100%;
-  background-color: blue;
-  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 15px;
+  text-align: left;
+  width: 50%;
+  color: blue;
+  background-color: white;
   border: 1px solid #fff
 }
 .link {
-  color: white;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 15px;
+  color:blue;
   text-decoration: none;
 }
 
@@ -57,7 +66,7 @@ button {
 
 .nav-container {
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid lightgoldenrodyellow;
   margin: 10px;
   padding: 5px;
   display: flex;
@@ -67,34 +76,34 @@ button {
 
 
 .projects-container {
-  border: 1px solid black;
+  border: 1px solid lightgoldenrodyellow;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  margin: 10px;
+  margin: 30px;
 }
 
 .login-container {
-  border: 1px solid black;
+  border: 1px solid lightgoldenrodyellow;
   height: 93vh;
   width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
   margin: 10px;
 }
 
 .input-container {
-  border: 1px solid black;
+  border: 1px solid lightgoldenrodyellow;
   display: flex;
   flex-direction: column;
   margin: 10px;
 }
 
 .profile-container{
-  border: 1px solid black;
+  border: 1px solid lightgoldenrodyellow;
   width: 90%;
   height: 90vh;
   display: flex;

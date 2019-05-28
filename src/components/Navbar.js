@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import BurgerMenu from '../pages/BurgerMenu'
 
 class Navbar extends Component {
   render() {
@@ -12,10 +13,11 @@ class Navbar extends Component {
         </button>
         {isLoggedin ? (
           <>
-            <button>
+            <Link to="/menu" className="link">xo</Link>
+            {/* <button>
             <Link to="/profile" className="link">{user.username}</Link>
             </button>
-            <button onClick={logout}>Logout</button>
+            <button onClick={logout}>Logout</button> */}
           </>
         ) : (
           <>

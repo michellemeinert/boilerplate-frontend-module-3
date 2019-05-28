@@ -88,9 +88,9 @@ class OneProject extends Component {
                 <p>description: {project.description}</p>
 
                 {  isContributor ? (
-                  <button onClick={()=>{this.removeContributor(project._id); console.log(this.state, project._id)}}>Cancel Contribution :-)</button>
+                  <button onClick={()=>{this.removeContributor(project._id); console.log(this.state, project._id)}}>cancel contribution</button>
                 ) : (
-                  <button onClick={()=>{this.joinProject(project._id); console.log(this.state, project._id)}}>Join Project</button>
+                  <button onClick={()=>{this.joinProject(project._id); console.log(this.state, project._id)}}>join project</button>
                   
                 ) } 
       </div>
