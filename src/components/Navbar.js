@@ -13,7 +13,7 @@ class Navbar extends Component {
         </button>
         {isLoggedin ? (
           <>
-            <Link to="/menu" className="link">xo</Link>
+            <Link to="/menu" className="link menu">xo</Link>
             {/* <button>
             <Link to="/profile" className="link">{user.username}</Link>
             </button>
