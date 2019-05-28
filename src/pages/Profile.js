@@ -64,6 +64,10 @@ class Profile extends Component {
     })
   }
 
+  cancelEdit = () => {
+    return this.props.history.push('/profile/projects')
+  }
+
   componentDidMount() {
 
     profile.getProfile()
@@ -104,6 +108,7 @@ class Profile extends Component {
               {disable ? <input type="submit" disabled></input> : <input type="submit"></input>}
 
             </form>
+            <button onClick={this.cancelEdit}>Cancel</button>
           </div>
         ) : (
             <div className="profile-container">

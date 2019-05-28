@@ -47,6 +47,10 @@ class AddProject extends Component {
     })
   }
 
+  cancelEdit = () => {
+    return this.props.history.push('/profile/projects')
+  }
+
   componentDidMount() {
     console.log('state in didMount', this.state)
     const { projectname, description, lookingFor } = this.state
@@ -91,6 +95,7 @@ class AddProject extends Component {
               <input type="submit"/>
             </form>
           </div>  
+          <button onClick={this.cancelEdit}>Cancel</button>
           <button onClick={()=>{
             this.deleteProject();
             this.redirectAfterSumbit()
