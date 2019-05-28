@@ -3,13 +3,17 @@ import axios from "axios";
 class Project {
   constructor() {
     this.project = axios.create({
-      baseURL: "http://localhost:5000",
+      baseURL: process.env.REACT_APP_API_URL,
       withCredentials: true
     });
   }
+  getOneProject = (id, data) => {
+    return this.project.get(`/projects/${id}`, data)
+    .then(({data}) => data)
+  }
 
   editProject = (data, _id) => {
-    return this.project.put(`projects/${_id}/editProject`, data)
+    return this.project.put(`/projects/${_id}/editProject`, data)
     .then(({data}) => data)
   }
 
@@ -34,6 +38,11 @@ class Project {
   
   addContributors = (projectId) => {
     return this.project.put(`/projects/${projectId}/contributors`)
+    .then(({data}) => data)
+  }
+
+  removeContributor = (projectId) => {
+    return this.project.put(`/projects/${projectId}/removeContributor`)
     .then(({data}) => data)
   }
   
