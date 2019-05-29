@@ -98,6 +98,11 @@ button {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  
+}
+
+.input-container input {
+  outline: none;
 }
 
 .profile-container{
