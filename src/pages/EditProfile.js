@@ -20,6 +20,7 @@ class EditProfile extends Component {
   }
 
   handleSubmit = (event) => {
+    console.log('in handleSubmit')
     event.preventDefault();
     const { occupation, description } = this.state;
     
@@ -29,8 +30,8 @@ class EditProfile extends Component {
           occupation: data.occupation,
           description: data.description,
           clickedEdit: false
-        })
-      }, ()=> {this.props.history.push('/profile')})
+        },()=> {this.redirect()})
+      })
       .catch((error) => console.log(error))
   }
 
@@ -42,10 +43,10 @@ class EditProfile extends Component {
     uploadData.append('photo', file)
 
     profile.addImage(uploadData)
-      .then((imgUrl) => {
+      .then((data) => {
         console.log('state in fileOnChange', this.state.imgUrl)
         this.setState({
-          imgUrl,
+          imgUrl: data,
           disable: false
         })
         console.log('state in fileOnChange', this.state.imgUrl)
@@ -53,8 +54,9 @@ class EditProfile extends Component {
       .catch((error) => console.log(error))
   }
 
-  cancelEdit = () => {
-    return this.props.history.push('/profile')
+  redirect = () => {
+    console.log('in redirect')
+    return (this.props.history.push('/profile'))
   }
   render() {
     const { occupation, description, disable } = this.state
@@ -77,7 +79,7 @@ class EditProfile extends Component {
               {disable ? <input type="submit" disabled></input> : <input type="submit"></input>}
 
             </form>
-            <button onClick={this.cancelEdit}>Cancel</button>
+            <button onClick={this.redirect}>Cancel</button>
           </div>
       
     )

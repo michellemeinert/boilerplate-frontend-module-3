@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import profile from '../lib/profile-service'
-//import project from '../lib/project-service'
-import {Link} from 'react-router-dom'
 
 
 class Profile extends Component {
@@ -87,7 +85,7 @@ class Profile extends Component {
 
   render() {
     console.log(this.state)
-    const { occupation, description, disable, clickedEdit, imgUrl } = this.state
+    const { occupation, description, imgUrl } = this.state
     return (
       <div>
         {/* {clickedEdit ? (
