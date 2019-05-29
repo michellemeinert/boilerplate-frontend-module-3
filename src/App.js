@@ -3,9 +3,9 @@ import { Switch } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import PreLogin from "./pages/PreLogin";
-import SearchBar from "./components/SearchBar";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import StrangersProfile from "./pages/StrangersProfile";
 import AddProject from "./pages/AddProject";
 import EditProject from "./pages/EditProject";
 import EditProfile from "./pages/EditProfile";
@@ -13,6 +13,7 @@ import profileProjects from "./pages/profileProjects";
 import Signup from "./pages/Signup";
 import BurgerMenu from "./pages/BurgerMenu";
 import Login from "./pages/Login";
+//import SearchBar from './components/SearchBar'
 
 
 import PrivateRoute from "./components/PrivateRoute";
@@ -27,7 +28,7 @@ class App extends Component {
         <div className="container">
           <Navbar />
           
-          {/* <SearchBar /> */}
+         
           </div>
           <div>
           <Switch>
@@ -42,6 +43,7 @@ class App extends Component {
             <PrivateRoute path={`/projects/:id/editProject`} component={EditProject}/>
             <PrivateRoute exact path={`/profile/edit`} component={EditProfile}/>
             <PrivateRoute exact path={`/menu`} component={BurgerMenu}/>
+            <PrivateRoute exact path={`/profile/:id`} component={StrangersProfile}/>
 
           </Switch> 
         </div>

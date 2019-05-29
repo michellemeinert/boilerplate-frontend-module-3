@@ -14,58 +14,6 @@ class Profile extends Component {
     //clickedAddProject: false
   }
 
-  // handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   })
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const { occupation, description } = this.state;
-    
-  //   profile.editProfile({ occupation, description })
-  //     .then((data) => {
-  //       this.setState({
-  //         occupation: data.occupation,
-  //         description: data.description,
-  //         clickedEdit: false
-  //       })
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-
-  // fileOnchange = (event) => {
-  //   console.log('state in fileOnChange', this.state.imgUrl)
-  //   console.log('in fileOnChange')
-  //   const file = event.target.files[0];
-  //   const uploadData = new FormData()
-  //   uploadData.append('photo', file)
-
-  //   profile.addImage(uploadData)
-  //     .then((imgUrl) => {
-  //       console.log('state in fileOnChange', this.state.imgUrl)
-  //       this.setState({
-  //         imgUrl,
-  //         disable: false
-  //       })
-  //       console.log('state in fileOnChange', this.state.imgUrl)
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-
-  // clickedEditChange = () => {
-  //   console.log("hi michelle :Ü")
-  //   this.setState({
-  //     clickedEdit: true
-  //   })
-  // }
-
-  // cancelEdit = () => {
-  //   return this.props.history.push('/profile/projects')
-  // }
-
   componentDidMount() {
 
     profile.getProfile()
@@ -87,7 +35,7 @@ class Profile extends Component {
     console.log(this.state)
     const { occupation, description, imgUrl } = this.state
     return (
-      <div>
+      <div className="profile-container">
         {/* {clickedEdit ? (
           <div className="profile-container">
             <form onSubmit={this.handleSubmit}>
@@ -109,7 +57,7 @@ class Profile extends Component {
             <button onClick={this.cancelEdit}>Cancel</button>
           </div>
         ) : ( */}
-            <div className="profile-container">
+            <div >
              
               <h2>{occupation}</h2>
               <img src={imgUrl} alt="lala" className="profile-pic"/>

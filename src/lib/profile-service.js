@@ -7,13 +7,18 @@ class Profile {
       withCredentials: true
     });
   }
+
+  getAllUsers = () => {
+    return this.profile.get('/profile/users')
+    .then(({data}) => data)
+  }
   getProfile = () => {
     return this.profile.get('/profile')
     .then(({data}) => data)
   }
 
   getStrangersProfile = (id) => {
-    return this.profile.get('/profile/id', id)
+    return this.profile.get(`/profile/${id}`)
     .then(({data}) => data)
   }
 
