@@ -74,19 +74,20 @@ class OneProject extends Component {
    }
 
   render() {
-   
     const {project, isContributor} = this.state
+    console.log(project)
     return (
       <div>
          <h2>{project.projectname}</h2>
                 <p>owner: {project.owner ? project.owner.username:""}</p>
-            {
-              this.props.contributors.map((contributor)=>{
-                return <div>
-                  <p>contributors: {project.contributors.length > 0 ? project.contributors[0].username : ""} 
+                <p>contributors: </p>
+            { 
+              project.contributors.length > 0 ?project.contributors.map((contributor , _id, index)=>{
+                return <div key={_id}>
+                  <p>{contributor.username} 
                 </p>
                 </div>
-              })
+              }) : "none, yet"
             }
                 <p>description: {project.description}</p>
 
