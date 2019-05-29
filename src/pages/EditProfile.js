@@ -30,7 +30,7 @@ class EditProfile extends Component {
           description: data.description,
           clickedEdit: false
         })
-      })
+      }, ()=> {this.props.history.push('/profile')})
       .catch((error) => console.log(error))
   }
 

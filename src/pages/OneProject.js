@@ -80,11 +80,14 @@ class OneProject extends Component {
       <div>
          <h2>{project.projectname}</h2>
                 <p>owner: {project.owner ? project.owner.username:""}</p>
-            
-                <p>contributors: 
-                  {/* {project.contributors[0] ? project.contributors[0].username : ""} */}
-                  {project.contributors.length > 0 ? project.contributors[0].username : ""} 
+            {
+              this.props.contributors.map((contributor)=>{
+                return <div>
+                  <p>contributors: {project.contributors.length > 0 ? project.contributors[0].username : ""} 
                 </p>
+                </div>
+              })
+            }
                 <p>description: {project.description}</p>
 
                 {  isContributor ? (
