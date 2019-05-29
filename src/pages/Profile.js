@@ -112,8 +112,8 @@ class Profile extends Component {
             <div className="profile-container">
              
               <h2>{occupation}</h2>
+              <img src={imgUrl} alt="lala" className="profile-pic"/>
               <p className="description-container">{description}</p>
-              <img src={imgUrl} alt="lala" />
             </div>
          
       </div> 

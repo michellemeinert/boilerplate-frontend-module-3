@@ -24,7 +24,7 @@ class Profile {
 
   addImage = (image) => {
     return this.profile.post('/profile/image', image)
-    .then(({image}) => image)
+    .then(({data}) => data)
   }
 
   addProject = (project) => {

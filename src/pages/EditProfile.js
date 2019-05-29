@@ -22,9 +22,9 @@ class EditProfile extends Component {
   handleSubmit = (event) => {
     console.log('in handleSubmit')
     event.preventDefault();
-    const { occupation, description } = this.state;
+    const { occupation, description, imgUrl } = this.state;
     
-    profile.editProfile({ occupation, description })
+    profile.editProfile({ occupation, description, imgUrl })
       .then((data) => {
         this.setState({
           occupation: data.occupation,
@@ -43,10 +43,11 @@ class EditProfile extends Component {
     uploadData.append('photo', file)
 
     profile.addImage(uploadData)
-      .then((data) => {
+      .then((imgUrl) => {
+        console.log('api response', imgUrl)
         console.log('state in fileOnChange', this.state.imgUrl)
         this.setState({
-          imgUrl: data,
+          imgUrl,
           disable: false
         })
         console.log('state in fileOnChange', this.state.imgUrl)
